@@ -1,0 +1,53 @@
+﻿@using Apl.UI.Models
+
+@{
+
+    var interViewOptions = (ViewOptions)ViewBag.ViewOptions;
+
+}
+
+    
+
+<div class="fixed-width">
+@if (interViewOptions.InfoViewPartial != null)
+{
+    var info = interViewOptions.InfoViewPartial;
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <i>
+                @info.Header
+            </i>
+        </div>
+        <div class="panel-body">
+            @{
+    foreach (var item in info.Body.List)
+    {
+        <dl class="dl-horizontal myinfo-partial-dl">
+            <dt>
+                @item.Right
+            </dt>
+
+            <dd>
+                @item.Left
+            </dd>
+        </dl>
+    }
+    if (!string.IsNullOrEmpty(info.UrlPartialView))
+    {
+        @Html.Partial(info.UrlPartialView)
+    }
+            }
+        </div>
+    </div>
+
+
+}
+</div>
+
+
+
+
+
+
+
+

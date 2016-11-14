@@ -1,0 +1,29 @@
+﻿@using Apl.Presentacion.Models
+@model HandleErrorInfo
+@{
+    if (ViewBag.ViewOptions == null){ ViewBag.ViewOptions = new ViewOptions { IsFixed = true, IsPrincipal = false, IsSencondaryWhite = true}; }
+    ViewBag.Title = "Fail Whale";
+}
+
+@Html.Partial("~/Views/Shared/GeneralPartial/_RedirectForErrorPartial.cshtml")
+
+<hgroup class="title">
+    <h1 class="mypage-error">
+        Error.</h1>
+
+    @if (@Model != null)
+    {
+        
+        <h2 class="error">@Model.Exception</h2>
+    }
+    else
+    {
+        <h2>
+            Oops! Servidor retornó el código 404 (Página no encontrada)!
+            <br />
+            En español  significa la Página , dirección , dirección URL que busca se ha movido sin dejar un reenvío
+            dirección :( ! El error debe ser reportado a su administrador.
+        </h2>
+    }
+
+</hgroup>

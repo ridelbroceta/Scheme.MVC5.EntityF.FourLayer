@@ -1,0 +1,33 @@
+﻿@using Apl.UI.Facade
+
+
+@{
+    
+    var xmlsPath = WebConfigFacade.Get("MyXmlsPath");
+    var fileName = WebConfigFacade.Get("ContactFeaturesXml");
+    var mypath = string.Format("{0}/{1}", xmlsPath, fileName);
+
+    var razonSocial = ContactFeaturesFacade.GetRSocial(Server.MapPath(mypath));    
+}
+
+<!--footer-->
+            <footer id="footer" class="bg_light_3 mydecoretion">
+                <hr class="divider_type_2" />
+                <!--top part-->
+                <section id="footertop" class="footer_top_part" style="width: 100%;">
+                </section>
+                <!--bottom part-->
+                <section id="footerbottom" class="footer_bottom_part t_align_c color_grey bg_light_4 fw_light" style="width: 100%;">
+                    <div class="fixed-width">
+                        <div class="row" style="width: 100%;">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <p>&copy; @DateTime.Now.Year - @(razonSocial). </p>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <img id="div-footer-img" src="../../Images/germanmanagement.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </footer>

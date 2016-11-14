@@ -1,0 +1,125 @@
+﻿@using Apl.UI.Facade
+@{
+    var xmlsPath = WebConfigFacade.Get("MyXmlsPath");
+    var fileName = WebConfigFacade.Get("ContactFeaturesXml");
+    var mypath = string.Format("{0}/{1}", xmlsPath, fileName);
+    var soporte = ContactFeaturesFacade.GetSupportWithAddress(Server.MapPath(mypath));
+
+}
+
+<div class="fixed-width">
+    <div class="row" style="width: 100%">
+        <!--about us-->
+        <div class="col-lg-4 col-md-4 col-sm-4 fw_light m_bottom_30">
+            <h5 class="color_dark m_bottom_20">Acerca de nosotros</h5>
+            <p>
+                <span style="font-family: castelar;">OI<span style="color: red;">K</span>OS</span> está introduciendo en el país un innovador concepto de servicios inmobiliarios.
+            </p>
+        </div>
+        <!--contact info-->
+        <div class="col-lg-5 col-md-5 col-sm-5 m_bottom_30">
+            <h5 class="color_dark m_bottom_20 fw_light">Contáctecnos</h5>
+            <div class="row">
+                <ul class="col-lg-10 col-md-10 col-sm-10 fw_light w_break m_xs_bottom_8">
+                    <li class="m_bottom_8">
+                        <div class="d_inline_m icon_wrap_size_1 color_pink circle m_right_10">
+                            <i class="icon-webphone"></i>
+                        </div>
+                        @soporte.Phone
+                    </li>
+                    <li class="m_bottom_8">
+                        <div class="d_inline_m icon_wrap_size_1 color_pink circle m_right_10">
+                            <i class="icon-webmail-alt"></i>
+                        </div>
+                        <a class="color_black color_pink_hover" href="mailto:#">@soporte.Email</a>
+                    </li>
+                    <li class="m_bottom_8 fw_light relative">
+                        <div class="icon_wrap_size_1 color_pink circle f_left m_right_10">
+                            <i class="icon-weblocation"></i>
+                        </div>
+                        <p>@soporte.Address</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--social buttons-->
+        <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_30 m_xs_bottom_20">
+            <h5 class="color_dark m_bottom_20 fw_light">Nos encontramos en:</h5>
+            <ul class="hr_list social_icons">
+                <!--tooltip_container class is required-->
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Facebook</span>
+                    <a class="d_block facebook icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webfacebook-1 fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Twitter</span>
+                    <a class="d_block twitter icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webtwitter fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Google Plus</span>
+                    <a class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webgplus fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Pinterest</span>
+                    <a class="d_block pinterest icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webpinterest fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Dribbble</span>
+                    <a class="d_block dribbble icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webdribbble fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Flickr</span>
+                    <a class="d_block flickr icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webflickr fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Youtube</span>
+                    <a class="d_block youtube icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webyoutube-play fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Vimeo</span>
+                    <a class="d_block vimeo icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webvimeo fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">Instagram</span>
+                    <a class="d_block instagram icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-webinstagramm fs_small"></i>
+                    </a>
+                </li>
+                <li class="m_right_15 m_bottom_15 tooltip_container">
+                    <!--tooltip-->
+                    <span class="d_block r_corners color_default tooltip fs_small tr_all">LinkedIn</span>
+                    <a class="d_block linkedin icon_wrap_size_2 circle color_grey_light_2" href="#">
+                        <i class="icon-weblinkedin-rect fs_small"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>    
+</div>
+
+

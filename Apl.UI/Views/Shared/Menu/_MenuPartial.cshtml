@@ -1,0 +1,51 @@
+﻿
+@{
+    var isAuth = Request.IsAuthenticated;
+    
+    <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="navbar-header">
+                    <button data-target=".bs-example-js-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="logo" href="@(isAuth?"/Home/FrameWork":"/Home/Index")"><img id="div-header-img" src="../../Images/logo.png" /></a>
+                </div>
+                <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
+                    @{
+                        if (isAuth)
+                        {
+                            if (User.IsInRole("Admins"))
+                            {
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        @Html.Partial("~/Views/Shared/Menu/_UsuarioPartial.cshtml")
+                                    </li>
+                                </ul>
+                            }
+                            else if (User.IsInRole("Others"))
+                            {
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        @Html.Partial("~/Views/Shared/Menu/_UsuarioPartial.cshtml")
+                                    </li>
+                                </ul>
+
+                            }
+                        }
+}
+                </div><!-- /.nav-collapse -->
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+
+}
+
+
+
+
+
+

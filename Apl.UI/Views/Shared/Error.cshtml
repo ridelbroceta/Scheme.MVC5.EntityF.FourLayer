@@ -1,0 +1,36 @@
+﻿@using Apl.Presentacion.Models
+@model HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    if (ViewBag.ViewOptions == null){ ViewBag.ViewOptions = new ViewOptions { IsFixed = true, IsPrincipal = false, IsSencondaryWhite = true}; }
+}
+
+@Html.Partial("~/Views/Shared/GeneralPartial/_RedirectForErrorPartial.cshtml")
+
+<hgroup class="title">
+    <h1 class="mypage-error">
+        Error.</h1>
+    <h2 class="mypage-error">
+        Se produjo un error mientras se procesaba su pedido.</h2>
+    @{
+        if (Request.IsLocal)
+        {
+            if (@Model != null)
+            {
+        <h3>
+            Exception was : @Model.Exception.Message</h3>
+        <h4>
+            Stack Trace: @Model.Exception.StackTrace</h4>
+            }
+            else
+            {
+        <h3>
+            Error desconocido</h3>
+            }
+        }
+        else
+        {
+        <h4>El error debe ser reportado a su administrador</h4>
+        }
+    }
+</hgroup>

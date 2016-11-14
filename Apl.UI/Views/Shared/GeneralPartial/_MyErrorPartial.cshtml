@@ -1,0 +1,21 @@
+﻿@using Apl.UI.Helpers
+<div class="alert alert-danger alert-dismissable">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <span>
+        <i class="fa fa-exclamation-circle"></i> Review, ....
+    </span>
+</div>
+
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        <span>
+            <i class="fa fa-exclamation-circle"></i> Message: @ViewBag.Message
+        </span>
+    </div>
+}
+
+
+@Html.Raw(Html.CustomValidationSummary())

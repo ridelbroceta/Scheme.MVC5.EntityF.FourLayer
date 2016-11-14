@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="roles" EntityType="Model.Store.roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users" EntityType="Model.Store.users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users_admin" EntityType="Model.Store.users_admin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users_ouser" EntityType="Model.Store.users_ouser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="role_user" EntityType="Model.Store.role_user" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_role_user_role" Association="Model.Store.FK_role_user_role">
+      <End Role="role" EntitySet="roles" />
+      <End Role="role_user" EntitySet="role_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_role_user_user" Association="Model.Store.FK_role_user_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="role_user" EntitySet="role_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_admin_inherits_user" Association="Model.Store.FK_admin_inherits_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="admin" EntitySet="users_admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ouser_inherits_user" Association="Model.Store.FK_ouser_inherits_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="ouser" EntitySet="users_ouser" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Level" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Pass" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="IsLocked" Type="bit" Nullable="false" />
+    <Property Name="IsConnected" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CountFailedPassAttempt" Type="smallint" Nullable="false" />
+    <Property Name="CountAfterPassAttempt" Type="smallint" Nullable="false" />
+    <Property Name="UserCreated" Type="int" Nullable="true" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateLastLogin" Type="datetime" Nullable="true" />
+    <Property Name="DateLastLockout" Type="datetime" Nullable="true" />
+    <Property Name="UserLastLockout" Type="int" Nullable="true" />
+    <Property Name="DateLastPassChange" Type="datetime" Nullable="true" />
+    <Property Name="UserUpdated" Type="int" Nullable="true" />
+    <Property Name="DateUpdated" Type="datetime" Nullable="true" />
+    <Property Name="UserResetPass" Type="int" Nullable="true" />
+    <Property Name="DateResetPass" Type="datetime" Nullable="true" />
+    <Property Name="Cmnt" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="users_admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users_ouser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="role_user">
+    <Key>
+      <PropertyRef Name="Roles_Id" />
+      <PropertyRef Name="Users_Id" />
+    </Key>
+    <Property Name="Roles_Id" Type="int" Nullable="false" />
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_role_user_role">
+    <End Role="role" Type="Model.Store.roles" Multiplicity="1" />
+    <End Role="role_user" Type="Model.Store.role_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="role_user">
+        <PropertyRef Name="Roles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_role_user_user">
+    <End Role="role_user" Type="Model.Store.role_user" Multiplicity="*" />
+    <End Role="user" Type="Model.Store.users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="role_user">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_admin_inherits_user">
+    <End Role="user" Type="Model.Store.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="admin" Type="Model.Store.users_admin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="admin">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ouser_inherits_user">
+    <End Role="user" Type="Model.Store.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ouser" Type="Model.Store.users_ouser" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ouser">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="roles" EntityType="Model.role" />
+          <EntitySet Name="users" EntityType="Model.user" />
+          <AssociationSet Name="role_user" Association="Model.role_user">
+            <End Role="role" EntitySet="roles" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Model.role_user" FromRole="role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="IsConnected" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CountFailedPassAttempt" Type="Int16" Nullable="false" />
+          <Property Name="CountAfterPassAttempt" Type="Int16" Nullable="false" />
+          <Property Name="UserCreated" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateLastLogin" Type="DateTime" Precision="0" />
+          <Property Name="DateLastLockout" Type="DateTime" Precision="0" />
+          <Property Name="UserLastLockout" Type="Int32" />
+          <Property Name="DateLastPassChange" Type="DateTime" Precision="0" />
+          <Property Name="UserUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="0" />
+          <Property Name="UserResetPass" Type="Int32" />
+          <Property Name="DateResetPass" Type="DateTime" Precision="0" />
+          <Property Name="Cmnt" Type="String" Nullable="true" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="Model.role_user" FromRole="user" ToRole="role" />
+        </EntityType>
+        <EntityType Name="admin" BaseType="Model.user">
+        </EntityType>
+        <EntityType Name="ouser" BaseType="Model.user" />
+        <Association Name="role_user">
+          <End Type="Model.role" Role="role" Multiplicity="*" />
+          <End Type="Model.user" Role="user" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.role)">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.user)">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="IsConnected" ColumnName="IsConnected" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CountFailedPassAttempt" ColumnName="CountFailedPassAttempt" />
+          <ScalarProperty Name="CountAfterPassAttempt" ColumnName="CountAfterPassAttempt" />
+          <ScalarProperty Name="UserCreated" ColumnName="UserCreated" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateLastLogin" ColumnName="DateLastLogin" />
+          <ScalarProperty Name="DateLastLockout" ColumnName="DateLastLockout" />
+          <ScalarProperty Name="UserLastLockout" ColumnName="UserLastLockout" />
+          <ScalarProperty Name="DateLastPassChange" ColumnName="DateLastPassChange" />
+          <ScalarProperty Name="UserUpdated" ColumnName="UserUpdated" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="UserResetPass" ColumnName="UserResetPass" />
+          <ScalarProperty Name="DateResetPass" ColumnName="DateResetPass" />
+          <ScalarProperty Name="Cmnt" ColumnName="Cmnt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model.admin)">
+        <MappingFragment StoreEntitySet="users_admin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ouser)">
+        <MappingFragment StoreEntitySet="users_ouser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="role_user" TypeName="Model.role_user" StoreEntitySet="role_user">
+      <EndProperty Name="role">
+        <ScalarProperty Name="Id" ColumnName="Roles_Id" />
+      </EndProperty>
+      <EndProperty Name="user">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

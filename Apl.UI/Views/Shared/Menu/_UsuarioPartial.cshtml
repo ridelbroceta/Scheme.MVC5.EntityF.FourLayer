@@ -1,0 +1,47 @@
+﻿@using Apl.UI.Artifacts
+@using Apl.UI.Security
+
+@if (Request.IsAuthenticated)
+{
+    var currentController = (MyBaseController) ViewContext.Controller;
+    var currentUser = currentController.CServices.ServiceUser.Find(((UserIdentity) User.Identity).UserId);
+
+    var isUserMiembro = (User.IsInRole("Miembro"));
+    
+    <a aria-expanded="false" role="button" aria-haspopup="true" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop9">&nbsp; @currentUser.ShortName<span class="caret"></span></a>
+    <ul aria-labelledby="drop9" role="menu" class="dropdown-menu">
+        <li>
+            <a href="/Account/StoredData" title="Datos Personales"><span class="fa fa-archive fa-fw"></span>&nbsp; Datos Personales</a>
+        </li>
+        @if (!isUserMiembro)
+        {
+            <li>
+                <a href="/Account/ChangeEmail" title="Email"><span class="fa fa-at fa-fw"></span>&nbsp; Email</a>
+            </li>
+        }
+        <li>
+            <a href="/Account/Manage" title="Password"><span class="fa fa-key fa-fw"></span>&nbsp; Contraseña</a>
+        </li>
+        <li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()"
+                   title="Salir"><span class="fa fa-sign-out fa-fw"></span>&nbsp; Salir</a>
+            }
+        </li>
+    </ul>
+}
+else
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+    {
+        @Html.AntiForgeryToken()
+        <a aria-expanded="false" role="button" aria-haspopup="true" data-toggle="dropdown" class="dropdown-toggle" href="javascript:document.getElementById('logoutForm').submit()" id="drop8">
+            Salir<span class="caret"></span>
+        </a>
+    }
+
+}
+
+

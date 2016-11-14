@@ -1,0 +1,12 @@
+﻿@using Apl.Presentacion.Models
+@{
+    ViewBag.Title = "Advertencia ó Error";
+    if (ViewBag.ViewOptions == null) { ViewBag.ViewOptions = new ViewOptions { IsFixed = true, IsPrincipal = false, IsSencondaryWhite = true }; }
+}
+
+
+@Html.Partial("~/Views/Shared/GeneralPartial/_RedirectForErrorPartial.cshtml")
+
+@Html.Partial("~/Views/Shared/GeneralPartial/_MyErrorPartial.cshtml")
+
+

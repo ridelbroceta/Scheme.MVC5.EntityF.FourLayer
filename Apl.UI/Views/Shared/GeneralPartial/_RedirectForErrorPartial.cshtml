@@ -1,0 +1,11 @@
+﻿
+@{
+    var isAuth = Request.IsAuthenticated;
+}
+
+<div class="alert alert-info alert-dismissable">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <span>
+        <i class="fa fa-exclamation-circle"></i> <a href="@(isAuth?"/Home/FrameWork":"/Home/Index")"><span class="fa fa-home fa-2x"> Ir a... si es necesario, si no esta en una ventana emergente</span></a>
+    </span>
+</div>

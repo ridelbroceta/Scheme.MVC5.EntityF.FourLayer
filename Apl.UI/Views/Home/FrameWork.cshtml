@@ -1,0 +1,28 @@
+﻿@using Apl.UI.Models
+@{
+    ViewBag.Title = "Company";
+
+    if (ViewBag.ViewOptions == null)
+    {
+        ViewBag.ViewOptions = new QueryViewOptions
+        {
+            IsFixed = true,
+        };
+    }
+        
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <img src="../../Images/framework.png"/>
+    </div>
+    <div class="col-md-8">
+        <section class="page_title t_align_l">
+            <div class="container">
+                <h1 class="color_grey_light fw_light m_bottom_5">FrameWork</h1>
+            </div>
+        </section>
+    </div>
+</div>
+
+

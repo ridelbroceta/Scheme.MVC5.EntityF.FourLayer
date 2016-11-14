@@ -1,0 +1,23 @@
+﻿* {     
+    margin: 0; 
+} 
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+	font:400 16px/1.5em "Lato","sans-serif";
+	color:#606366;
+    background:#e3e7e9;
+    overflow-x:hidden;
+	background-attachment: fixed;
+}
+
+#body-main {
+    width: 100%;
+    background: #ffffff;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+

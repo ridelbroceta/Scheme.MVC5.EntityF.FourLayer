@@ -1,0 +1,152 @@
+﻿@using Telerik.ReportViewer.Mvc
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="~/Content/css/kendo/kendo.common.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/css/kendo/kendo.blueopal.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        #reportViewer1 {
+            position: absolute;
+            left: 5px;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            overflow: hidden;
+            font-family: Verdana, Arial;
+        }
+    </style>
+
+    <link href="@Url.Content("~/ReportViewer/styles/telerikReportViewer-9.1.15.624.css")" rel="stylesheet"/>
+    
+
+    @RenderSection("styles", required: false)
+
+</head>
+<body>
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+    <!--kendo.all.min.js can be used as well instead of kendo.web.min.js and kendo.mobile.min.js-->
+<script src="@Url.Content("~/ReportViewer/js/telerikReportViewer-8.1.14.804.js")"></script>
+
+<script src="~/Scripts/kendo/kendo.web.min.js"></script>
+
+<!--kendo.mobile.min.js - optional, if gestures/touch support is required-->
+<script src="~/Scripts/kendo/kendo.mobile.min.js"></script>
+
+
+<script>
+
+    function onRenderingBegin() {
+        console.log("rendering begin!");
+    }
+    function onRenderingEnd() {
+        console.log("rendering end!");
+    }
+    function onPrintBegin() {
+        console.log("print begin!");
+    }
+    function onPrintEnd() {
+        console.log("print end!");
+    }
+    function onExportBegin() {
+        console.log("export begin!");
+    }
+    function onExportEnd() {
+        console.log("export end!");
+    }
+    function onUpdateUi() {
+        console.log("update ui!");
+    }
+    function onError() {
+        console.log("error!");
+    }
+    function onPageReady() {
+        console.log("page ready!");
+    }
+
+    function createSingleSelectEditor(placeholder, options) {
+        var dropDownElement = $(placeholder).html('<div></div>');
+        var parameter,
+              valueChangedCallback = options.parameterChanged,
+              dropDownList;
+
+        function onChange() {
+            var val = dropDownList.value();
+            valueChangedCallback(parameter, val);
+        }
+
+        return {
+            beginEdit: function (param) {
+
+                parameter = param;
+
+                $(dropDownElement).kendoDropDownList({
+                    dataTextField: "name",
+                    dataValueField: "value",
+                    value: parameter.value,
+                    dataSource: parameter.availableValues,
+                    change: onChange
+                });
+
+                dropDownList = $(dropDownElement).data("kendoDropDownList");
+            }
+        };
+    }
+
+    function customMatch(parameter) {
+        return Boolean(parameter.availableValues)
+            && !parameter.multivalue
+            && parameter.type === telerikReportViewer.ParameterTypes.BOOLEAN;
+    }
+
+    function createCustomEditor(placeholder, options) {
+        var dropDownElement = $(placeholder).html('<div></div>');
+        var parameter,
+              valueChangedCallback = options.parameterChanged,
+              dropDownList;
+
+        function onChange() {
+            var val = dropDownList.value();
+            valueChangedCallback(parameter, val);
+        }
+
+        return {
+            beginEdit: function (param) {
+
+                parameter = param;
+
+                $(dropDownElement).kendoDropDownList({
+                    dataTextField: "name",
+                    dataValueField: "value",
+                    value: parameter.value,
+                    dataSource: parameter.availableValues,
+                    change: onChange
+                });
+
+                dropDownList = $(dropDownElement).data("kendoDropDownList");
+            }
+        };
+    }
+
+</script>
+
+@(
+
+
+        // All deferred initialization statements will be rendered here
+        Html.TelerikReporting().DeferredScripts()
+)

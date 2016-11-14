@@ -1,0 +1,591 @@
+﻿/* main layout
+----------------------------------------------------------*/
+
+
+.fixed-width {
+    margin: 0 auto;
+    width: 1127px;
+}
+
+.oper-section {
+    margin: 0 auto;
+    padding: 15px 15px 15px 15px;
+    width: 1160px;
+}
+
+.mycontainer {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.signin-card {
+    background-color: #f7f7f7;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+}
+
+/*workcontent*/
+.work-content {
+    font: 400 16px/1em "Lato","sans-serif";
+}
+
+.work-content a.disabled,
+.work-content a[disabled]{
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
+}
+
+/*workcontent*/
+
+.footer-graphs {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+
+.navbar-inverse {
+    background: #205081 none repeat scroll 0 0;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    background-color: #3572b0;
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #3572b0;
+    color: #fff;
+}
+
+.dropdown-menu > li  a:hover, .dropdown-menu > li  a:focus {
+    background-color: #205081;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-menu > li  a {
+    clear: both;
+    color: #333;
+    display: block;
+    font-weight: 400;
+    line-height: 1.42857;
+    padding: 3px 20px;
+    white-space: nowrap;
+}
+/* aqui submenu*/
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+@media (min-width: 768px) {
+    /*added by T Morphy */
+/*from http://www.barrykooij.com/bootstrap-submenu-open-on-mouse-over/ to get hover behaviour on desktop */
+ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
+ul.nav li.dropdown:hover ul.dropdown-menu li.dropdown-submenu ul.dropdown-menu {
+    display: none;
+} 
+ul.nav li.dropdown ul.dropdown-menu li.dropdown-submenu:hover ul.dropdown-menu {
+    display: block;
+} 
+  .lead {
+    font-size: 21px;
+  }
+}
+
+/* aqui termina submenu*/
+
+.display-label {
+    /*para los warnings*/
+}
+.display-field {
+    /*para los warnings*/
+}
+
+.mydecoretion a,  .mydecoretion a:hover, .mydecoretion a:active, .mydecoretion a:after{
+    text-decoration: none;
+}
+
+/*.mycolordec a:hover, .mycolordec a:active, .mycolordec a:after{
+    
+}*/
+
+.mycolorbtop {
+    color:#cbd0d4;
+    border-color: #cbd0d4;
+}
+
+.mycolorbtop:hover, .mycolorbtop:active, .mycolorbtop:after{
+    color: #3fb8d6;
+    border-color: #3fb8d6;
+}
+
+.mycolorbtop > i {
+    color:#cbd0d4;
+}
+
+.mycolorbtop > i:hover, .mycolorbtop > i:active, .mycolorbtop > i:after{
+    color: #3fb8d6;
+}
+
+
+.barra-iconos-grid a,  .barra-iconos-grid a:hover, .barra-iconos-grid a:active, .barra-iconos-grid a:after{
+    text-decoration: none;
+}
+
+/* page titles */
+hgroup.title {
+    margin-bottom: 10px;
+}
+
+#div-header-img {
+    max-width: 150px;
+    max-height: 50px;
+}
+
+#div-footer-img {
+    max-width: 150px;
+    max-height: 50px;
+}
+
+
+/* info and errors */
+.mypage-error {
+    color: #e80c4d;
+}
+
+.message-info {
+    border: 1px solid;
+    clear: both;
+    padding: 5px 5px;
+}
+
+.message-error {
+    clear: both;
+    color: #e80c4d;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+}
+
+.message-success {
+    color: #3cb371;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+/*input.input-validation-error, select.input-validation-error {
+    border: 1px solid #e80c4d;
+}*/
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*mio*/
+
+
+input[type="radio"], input[type="checkbox"] {
+    margin: 0 0 0;
+}
+
+.inputpresup {
+    font-size: 0.95em;
+    padding: 1px 2px 2px 1px;
+    width: 100%;
+}
+
+label {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+label.checkbox {
+    display: inline;
+}
+
+input[type="button"], input[type="reset"], input[type="submit"], input[type="valid"], input[type="checkbox"] , input[type="radio"]{
+    width: auto;
+}
+
+.div-img-left {
+    max-width: 220px;
+    max-height: 380px;
+}
+
+.navbar-img {
+    max-width: 141px;
+    max-height: 100px;
+}
+
+.a-img-link-home {
+    max-width: 141px;
+    max-height: 141px;
+    margin-left: 15px;
+}
+
+.margin-img-right {
+    margin-right: 20px;
+}
+
+#myowl .item{
+max-width: 100%;
+}
+
+
+#myowl .item img{
+display: block;
+width: 100%;
+height: auto;
+}
+
+
+.text-dec-none {
+    text-decoration: none;
+}
+
+.hover-text-dec-none:hover {
+    text-decoration: none;
+}
+
+.unblock {
+    display: inline;
+}
+.block {
+    display: block;
+}
+
+div.fileinput-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.grid-mvc {
+    font-size: 0.80em;
+}
+.grid-mvc .table > thead > tr > th, .grid-mvc .table > tbody > tr > th, .grid-mvc .table > tfoot > tr > th, 
+    .grid-mvc .table > thead > tr > td, .grid-mvc .table > tbody > tr > td, .grid-mvc .table > tfoot > tr > td {
+    padding: 2px 0 2px 0;
+    vertical-align: middle;
+}
+.grid-mvc .btn {
+    padding: 3px 5px
+}
+.td-label {
+    width: 17%;
+}
+.quitar-margin-bottom {
+    margin-bottom: 0;
+}
+ 
+.list-inline > li {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+
+.margin-datepicker {
+    margin: 0 0 5px 0 ;
+}
+.tag-bordered-bottom {
+  border-bottom: 1px solid #daa520;   
+}
+.prefijo-bordered {
+  border: 1px solid #daa520;
+  width: 55px;
+  font-size: 1em;
+  line-height: 1.42857;
+  margin: 0 0 16px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.prefijo-bordered tbody > tr > td {
+  padding: 2px 6px;
+}
+
+.ingreso-bordered {
+  border: 1px solid #daa520;
+  width: 70px;
+  font-size: 1em;
+  line-height: 1.42857;
+  margin: 0 0 16px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.ingreso-bordered tbody > tr > td {
+  padding: 2px 6px;
+}
+
+select {
+    display: inline;
+}
+
+.barra-iconos-grid {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.icon-grid-top {
+    font-size: 25px;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+    border: 1px solid #00bfff; 
+    text-align: center;
+    background-color: whitesmoke;
+    vertical-align: middle;
+}
+
+.icon-grid-top:hover, .icon-grid-top:active {
+    background-color: white;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+    text-align: center;
+    border: 1px solid #00bfff; 
+}
+
+
+.inp-sel-area-add {
+    width: 80%;
+}
+
+.inp-sel-area-add70 {
+    width: 70%;
+}
+
+.col-padding-right-icon {
+    padding-right: 3px;
+}
+.col-padding-left-icon {
+    padding-left: 3px;
+}
+
+.mythumbnail-upload {
+    width: 140px;
+    height: 140px;
+}
+
+.mythumbnail-show {
+    width: 105px;
+    height: 105px;
+}
+.myimage-x {
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.myimage-2x {
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.myimage-3x {
+    max-width: 64px;
+    max-height: 64px;
+}
+.elogo-communitymanager{
+    margin-top: 8px;
+}
+
+.scrollspy-politicas{
+    height: 300px;
+    margin-top: 10px;
+    overflow: auto;
+    position: relative;
+}
+
+.scrollspy-general{
+    max-height: 300px;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: relative;
+}
+
+.scrollspy-o1{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.mytable_toprint td {
+    padding-bottom:  0;
+    padding-top:  0;
+    font-size: 0.75em;
+    padding-left:  8px;
+}
+
+.mytable_head_toprint td {
+    padding-bottom:  0;
+    padding-top:  0;
+    padding-left:  8px;
+
+}
+
+
+.mytmpk-grid {
+    max-height: 690px;
+    margin: 10px auto 0;
+    padding: 0 4px 0 4px;
+    font-size: 0.80em;
+}
+
+.myinfo-partial-dl {
+    margin-bottom: 0;
+}
+
+
+.edifs-div {
+    height: 300px;
+    overflow-y: auto;
+    position: relative;
+    width: 258px;
+    -moz-user-select: text;
+    background: #fff none repeat scroll 0 0;
+    border-radius: 2px;
+    outline: medium none;
+}
+
+.edifs-ul {
+    background: #fff none repeat scroll 0 0;
+    margin: 0;
+    text-align: left;
+    white-space: normal;
+    display: block;
+}
+
+
+.edifs-li {
+    color: black;
+    display: inline-block;
+    height: 87px;
+    padding: 5px;
+    margin-top: 10px;
+    vertical-align: top;
+    width: 75px;
+    z-index: 999;
+}
+
+
+.edifs-li:hover {
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+}
+
+.edifs-a, .edifs-a:hover, .edifs-a:focus{
+    color: #606366;
+    text-align: center;
+}
+
+.edifs-a img {
+    max-width: 65px;
+    max-height: 77px;
+}
+
+.edifs-a label {
+    font-size: 0.80em;
+}
+
+
+.dropdown-menu {
+    min-width: 200px;
+}
+
+.catalog-cuadro {
+    border: 1px solid; 
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+.catalog-header {
+    height: 35px; margin: 3px 3px 3px 3px
+}
+
+.catalog-number {
+    color: blue;
+}
+
+.catalog-footer {
+    margin-left: 10px;
+}

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<empresa>
+  <site>www.oikos.ec</site>
+  <system>oikos management</system>
+  <rsocial>Serinoikos Cia. Ltda</rsocial>
+  <phones>
+    <phone>(+593-2) 2547-845</phone>
+    <phone>(+593-9) 9899-8951</phone>
+  </phones>
+  <contactos>
+    <registro>
+      <desc>Marketing</desc>
+      <emails>
+        <email>gerencia@oikos.ec</email>
+      </emails>
+    </registro>
+    <registro>
+      <desc>Supervisión:</desc>
+      <emails>
+        <email>supervision1@oikos.ec</email>
+        <email>supervision2@oikos.ec</email>
+      </emails>
+    </registro>
+    <registro>
+      <desc>Support</desc>
+      <emails>
+        <email>operacion5@oikos.ec</email>
+      </emails>
+    </registro>
+  </contactos>
+  <direccion>
+    <large>Av. Colón y Diego de Almagro. Edificio El Cisne Oficina 2-C. Quito - Ecuador</large>
+    <short>Edif.Cisne, Quito, Ecuador</short>
+    <x>-0.201496</x>
+    <y>-78.487571</y>
+  </direccion>
+  <support>
+    <email>operacion5@oikos.ec</email>
+    <phone>(+593-2) 2547-845</phone>
+  </support>
+</empresa>
+

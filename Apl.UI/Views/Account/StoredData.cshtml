@@ -1,0 +1,25 @@
+﻿@using Apl.UI.Models
+@{
+    ViewBag.Title = "Editar";
+    if (ViewBag.ViewOptions == null) { ViewBag.ViewOptions = new ViewOptions { IsFixed = true, IsPrincipal = true, }; }
+
+}
+
+
+@if (!string.IsNullOrEmpty(ViewBag.StatusMessage))
+{
+    <div class="alert alert-success alert-dismissable">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        <span>
+            <i class="fa fa-exclamation-circle"></i> @ViewBag.StatusMessage
+        </span>
+    </div>
+}
+
+
+@(ViewBag.HasLocalPassword ? Html.Partial("_StoredDataPartial") : Html.Partial("~/Views/Shared/GeneralPartial/_MyErrorPartial.cshtml"))
+
+@section Scripts {
+    
+    @Scripts.Render("~/bundles/mios/myjq_user_register")
+}

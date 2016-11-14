@@ -1,0 +1,41 @@
+﻿@using Apl.UI.Helpers
+@using Apl.UI.Models
+
+
+@{
+    if (ViewBag.ViewOptions == null) { ViewBag.ViewOptions = new ViewOptions { IsFixed = true, IsPrincipal = false, }; }
+
+    var interViewOptions = (ViewOptions)ViewBag.ViewOptions;
+    
+}
+
+
+@Html.Partial("~/Views/Shared/GeneralPartial/_ModalLoadingPartial.cshtml")
+
+@Html.Partial("~/Views/Shared/GeneralPartial/_InfoPartial.cshtml")
+    
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <section  class="myjsevent-pform">
+            @using (Html.BeginForm(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["Controller"].ToString(),
+                                                                                interViewOptions.RouteValues, FormMethod.Post, new { id = "OperForm", @class="myjsevent-form"}))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Raw(Html.CustomValidationSummary())
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Esta seguro de realizar esta operación? "@ViewBag.Title" 
+                    </div>
+                    <div class="panel-footer">
+                        <div class="form-actions no-color">
+                            <input class="btn btn-warning btn-lg" type="submit" value='Click aqui para realizar la operación' />
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+
