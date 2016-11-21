@@ -1,0 +1,1 @@
+Application that records and processes accounting transactions within functional modules such as accounts payable, accounts receivable, payroll, and trial balance. This system is focus to property administration.
