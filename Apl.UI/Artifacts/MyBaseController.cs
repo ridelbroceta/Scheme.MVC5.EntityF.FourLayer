@@ -53,7 +53,7 @@ namespace Apl.UI.Artifacts
         #endregion
 
         public FrameworkServiceFactory CServices
-        {
+        {//things
             get { return _serviceFactory ?? (_serviceFactory = new FrameworkServiceFactory() ); }
         }
 
