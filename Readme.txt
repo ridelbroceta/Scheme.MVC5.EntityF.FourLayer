@@ -1,1 +1,1 @@
-Application that records and processes accounting transactions within functional modules such as accounts payable, accounts receivable, payroll, and trial balance. This system is focus to property administration.
+Scheme of a four layer application with EntityFramework, MVC5 and role authentication.
